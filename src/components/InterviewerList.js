@@ -5,7 +5,6 @@ import InterviewerListItem from "./InterviewerListItem";
 import { action } from "@storybook/addon-actions";
 
 export default function interviewerList(props) {
-console.log(props);
 
   const listInterviewers = props.interviewers.map((interviewer) => {
     return(
@@ -13,8 +12,8 @@ console.log(props);
       key={interviewer.id}
       name={interviewer.name}
       avatar={interviewer.avatar}
-      selected={props.interviewer === interviewer.id}
-      setInterviewer={() => props.setInterviewer(interviewer.id)}
+      selected={interviewer.id === props.value}
+      setInterviewer={() => props.onChange(interviewer.id)}
       />
     )
   })
