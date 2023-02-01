@@ -2,9 +2,10 @@ import React from "react";
 import "components/InterviewerList.scss"
 import DayListItem from "./DayListItem";
 import InterviewerListItem from "./InterviewerListItem";
-import { action } from "@storybook/addon-actions";
 
-export default function interviewerList(props) {
+export default function InterviewerList(props) {
+  console.log(props)
+
 
   const listInterviewers = props.interviewers.map((interviewer) => {
     return(
@@ -13,7 +14,7 @@ export default function interviewerList(props) {
       name={interviewer.name}
       avatar={interviewer.avatar}
       selected={interviewer.id === props.value}
-      setInterviewer={() => props.onChange(interviewer.id)}
+      setInterviewer={() => {props.onChange(interviewer.id)}}
       />
     )
   })
