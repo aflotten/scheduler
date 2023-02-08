@@ -144,6 +144,11 @@ storiesOf("Button", module)
     />
   ));
 
+    const interview = {
+      student: "Bruce",
+      interviewer: interviewer
+    }
+
   storiesOf("Appointment", module)
   .addParameters({
     backgrounds: [{ name: "white", value: "#fff", default: true }]
@@ -154,6 +159,7 @@ storiesOf("Button", module)
   .add("Empty", () => <Empty onAdd={action("onAdd")} />)
   .add("Show", () => 
   <Show 
+  interview={interview}
   onDelete={action("onDelete")} 
   onEdit={action("onEdit")}
   />

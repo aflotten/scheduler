@@ -1,4 +1,5 @@
 import React from "react";
+import useVisualMode from "hooks/useVisualMode";
 import styles from "components/Appointment/styles.scss";
 import Header from "./Header";
 import Show from "./Show";
