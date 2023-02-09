@@ -4,15 +4,50 @@ import styles from "components/Appointment/styles.scss";
 import Header from "./Header";
 import Show from "./Show";
 import Empty from "./Empty";
+import Form from "./Form";
+
+
 
 export default function Appointment(props) {
 
-  const displayAppointment = props.interview ? <Show {...props}/> : <Empty />;
+  const EMPTY = "EMPTY";
+  const SHOW = "SHOW";
+  const CREATE = "CREATE";
 
-  return(
-    <article className="appointment">
-      <Header time={props.time}/>
-      {displayAppointment}
+
+  const { mode, transition, back } = useVisualMode(
+    props.interview ? SHOW : EMPTY
+  );
+
+  function save(name, interviewer) {
+    const interview = {
+      student: name,
+      interviewer
+    };
+
+    props.bookInterview(props.id, interview)
+    transition(SHOW);
+  }
+
+
+  return (
+    <article className="appointment" >
+      <Header time={props.time} />
+      {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
+      {mode === SHOW && (
+      <Show
+        interview={props.interview}
+      />
+      )}
+      {mode === CREATE && (
+        <Form
+          interviewers={props.interviewers}
+          onCancel={() => back()}
+          onSave={save}
+        />
+      )}
+
+
     </article>
   );
 };
