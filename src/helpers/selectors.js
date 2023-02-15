@@ -46,5 +46,14 @@ export function getInterviewersForDay(state, day) {
   }
   return results;
 };
-  
 
+export function getDay(day) {
+  const allDays = {
+    Monday: 0,
+    Tuesday: 1,
+    Wednesday: 2,
+    Thursday: 3,
+    Friday: 4
+  }
+  return allDays[day]
+}
