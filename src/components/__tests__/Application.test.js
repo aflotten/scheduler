@@ -117,10 +117,10 @@ describe("Application", () => {
     const appointment = getAllByTestId(container, "appointment").find(
       appointment => queryByText(appointment, "Archie Cohen")
     );
-    
+
     //click edit button
     fireEvent.click(getByAltText(appointment, "Edit"));
-    
+
     //enter test name
     fireEvent.change(getByPlaceholderText(appointment, /enter student name/i), {
       target: { value: "New name" }
@@ -156,13 +156,13 @@ describe("Application", () => {
     const appointment = getAllByTestId(container, "appointment").find(
       appointment => queryByText(appointment, "Archie Cohen")
     );
-    
+
     fireEvent.click(getByAltText(appointment, "Delete"));
     expect(getByText(appointment, "Delete the appointment?")).toBeInTheDocument();
 
     fireEvent.click(getByText(appointment, "Confirm"));
     expect(getByText(appointment, "DELETING")).toBeInTheDocument();
-    
+
     await waitForElement(() => getByText(appointment, "Error"));
     expect(getByText(appointment, "Error")).toBeInTheDocument();
     console.log(prettyDOM(appointment));

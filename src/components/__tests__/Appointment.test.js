@@ -4,8 +4,8 @@ import Application from "components/Application";
 
 describe("Appointment", () => {
 
-it("renders without crashing", () => {
-  render(<Application />);
-});
+  it("renders without crashing", () => {
+    render(<Application />);
+  });
 
 });

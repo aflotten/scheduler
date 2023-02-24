@@ -35,15 +35,15 @@ export default function Appointment(props) {
     transition(SAVING);
     props.bookInterview(props.id, interview)
       .then(() => transition(SHOW, true))
-      .catch(error => {transition(ERROR_SAVE, true)})
+      .catch(error => { transition(ERROR_SAVE, true) })
   }
 
   function cancel() {
     transition(DELETE, true);
 
     props.cancelInterview(props.id)
-      .then(() => {transition(EMPTY)})
-      .catch(error => {transition(ERROR_DELETE, true)})
+      .then(() => { transition(EMPTY) })
+      .catch(error => { transition(ERROR_DELETE, true) })
   }
 
 
@@ -53,11 +53,11 @@ export default function Appointment(props) {
       <Header time={props.time} />
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
       {mode === SHOW && (
-      <Show
-        interview={props.interview}
-        onDelete={() => {transition(CONFIRM)}}
-        onEdit={() => {transition(CREATE)}}
-      />
+        <Show
+          interview={props.interview}
+          onDelete={() => { transition(CONFIRM) }}
+          onEdit={() => { transition(CREATE) }}
+        />
       )}
       {mode === CREATE && (
         <Form
@@ -67,26 +67,26 @@ export default function Appointment(props) {
         />
       )}
       {mode === SAVING && (
-        <Status message="Saving"/>
+        <Status message="Saving" />
       )}
       {mode === CONFIRM && (
         <Confirm
-        onConfirm={cancel}
-        onCancel={back}/>
+          onConfirm={cancel}
+          onCancel={back} />
       )}
       {mode === DELETE && (
         <Status message="DELETING" />
       )}
       {mode === ERROR_SAVE && (
-        <Error 
-        message={"Could not save your appointment"}
-        onClose={back}
+        <Error
+          message={"Could not save your appointment"}
+          onClose={back}
         />
       )}
       {mode === ERROR_DELETE && (
         <Error
-        message={"Could not delete your appointment"}
-        onClose={back}
+          message={"Could not delete your appointment"}
+          onClose={back}
         />
       )}
     </article>
