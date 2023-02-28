@@ -28,7 +28,7 @@ Please follow this link to the repository for the scheduler API
 
 https://github.com/lighthouse-labs/scheduler-api
 
-Fork and clone the repository and follow the instructions within the README file in order to get the database up and running! 
+Fork and clone the repository and follow the instructions within the README file in order to get the database up and running! This API will have to be running simultaneously to the scheduler app!
 
 ## About Interview Scheduler
 
