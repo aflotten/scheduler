@@ -4,6 +4,7 @@ import { getDay } from "helpers/selectors";
 
 export default function useApplicationData() {
 
+  // hook to get all data from API, spreading previous state and updating days, appointments and interviewers
   useEffect(() => {
     Promise.all([
       axios.get("/api/days"),
@@ -23,6 +24,7 @@ export default function useApplicationData() {
 
   const setDay = day => setState({ ...state, day });
 
+  // use id and interview from save function to update appointment data
   function bookInterview(id, interview) {
     const appointment = {
     ...state.appointments[id], 
@@ -49,13 +51,14 @@ export default function useApplicationData() {
       }
     })
     
-
+    // use axios to fulfill API update call and set new state
     return axios.put(`/api/appointments/${id}`, appointment)
          .then(() => {
           setState({...state, appointments, days})
         })
   }
 
+  // similar functionality to bookInterview with axios delete action and state update
   function cancelInterview(id) {
     const appointment = {
       ...state.appointments[id], 
@@ -69,6 +72,7 @@ export default function useApplicationData() {
 
       const correctDay = getDay(state.day)
 
+      //update spots remaining
       const day = {
         ...state.days[correctDay],
         spots: state.days[correctDay].spots + 1

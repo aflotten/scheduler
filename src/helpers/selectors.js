@@ -1,3 +1,5 @@
+
+// helper function to get array of appointments
 export function getAppointmentsForDay(state, day) {
   let results = [];
   if(!state.days) {
@@ -16,7 +18,7 @@ export function getAppointmentsForDay(state, day) {
   return results;
 };
 
-
+// helper function to retrieve interview data
 export function getInterview(state, interview) {
   if(!interview) {
     return null;
@@ -28,6 +30,7 @@ export function getInterview(state, interview) {
   }
 }
 
+// helper function to get array of Interviewers for selected day
 export function getInterviewersForDay(state, day) {
   let results = [];
   if(!state.days) {
@@ -47,6 +50,7 @@ export function getInterviewersForDay(state, day) {
   return results;
 };
 
+//used for updating spots remaining
 export function getDay(day) {
   const allDays = {
     Monday: 0,

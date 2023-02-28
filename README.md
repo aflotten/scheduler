@@ -22,6 +22,14 @@ npm test
 npm run storybook
 ```
 
+## Running data API for scheduler 
+
+Please follow this link to the repository for the scheduler API
+
+https://github.com/lighthouse-labs/scheduler-api
+
+Fork and clone the repository and follow the instructions within the README file in order to get the database up and running! 
+
 ## About Interview Scheduler
 
 Interview scheduler is a react application capable of tracking interviews and openings from a seperate server. A user can create an interview in an open slot, where they will provide their name and select an available interviewer. After a user saves this interview, the user can then edit or delete the interview. All of these actions are dependent on axios put and delete requests to an API containing the interview data. 

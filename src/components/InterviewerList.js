@@ -1,13 +1,12 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import "components/InterviewerList.scss"
-import DayListItem from "./DayListItem";
 import InterviewerListItem from "./InterviewerListItem";
-
+//import classNames from "classnames";
 
 function InterviewerList(props) {
 
-
+// loop thru interviewers and set interviewer based on id 
   const listInterviewers = props.interviewers.map((interviewer) => {
     return (
       <InterviewerListItem

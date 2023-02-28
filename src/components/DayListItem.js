@@ -2,6 +2,7 @@ import React from "react";
 import classNames from "classnames";
 import "components/DayListItem.scss";
 
+// returns spots remaining count
 const formatSpots = (spots) => {
   if (spots === 0) {
     return "no spots remaining"
@@ -16,6 +17,7 @@ export default function DayListItem(props) {
 
   const spotsLeft = formatSpots(props.spots);
 
+  // conditional classes
   const dayClass = classNames("day-list__item",
     {
       "day-list__item--selected": props.selected,

@@ -1,9 +1,9 @@
 import React from "react";
-
 import "components/Button.scss";
 import classNames from "classnames";
 
 export default function Button(props) {
+   //changes button view if confirm or danger are truthy
    const buttonClass = classNames("button", {
       "button--confirm": props.confirm,
       "button--danger": props.danger
