@@ -25,7 +25,7 @@ export default function useApplicationData() {
   const setDay = day => setState({ ...state, day });
 
   // use id and interview from save function to update appointment data
-  function bookInterview(id, interview) {
+  function bookInterview(id, interview, edit = false) {
     const appointment = {
     ...state.appointments[id], 
     interview: { ...interview }
@@ -40,7 +40,7 @@ export default function useApplicationData() {
 
     const day = {
       ...state.days[correctDay],
-      spots: state.days[correctDay].spots - 1
+      spots: edit ? state.days[correctDay].spots : state.days[correctDay].spots - 1
     }
 
     const days = state.days.map((item, index) => {

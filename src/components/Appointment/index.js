@@ -10,7 +10,7 @@ import Confirm from "./Confirm";
 import Error from "./Error";
 
 export default function Appointment(props) {
-  
+
   // Variables for mode setting
   const EMPTY = "EMPTY";
   const EDIT = "EDIT";
@@ -30,7 +30,7 @@ export default function Appointment(props) {
   );
 
   // save interview to pass to bookInterview
-  function save(name, interviewer) {
+  function save(name, interviewer, edit) {
     const interview = {
       student: name,
       interviewer
@@ -38,7 +38,7 @@ export default function Appointment(props) {
 
     //tranisiton to saving while waiting for axios promise to resolve
     transition(SAVING);
-    props.bookInterview(props.id, interview)
+    props.bookInterview(props.id, interview, edit)
       .then(() => transition(SHOW, true))
       .catch(error => { transition(ERROR_SAVE, true) })
   }
@@ -70,6 +70,7 @@ export default function Appointment(props) {
           interviewers={props.interviewers}
           onCancel={() => back()}
           onSave={save}
+          edit={false}
         />
       )}
       {mode === EDIT && (
@@ -79,6 +80,7 @@ export default function Appointment(props) {
           onSave={save}
           interviewer={props.interview.interviewer.id}
           student={props.name ? props.name : props.interview.student}
+          edit={true}
         />
       )}
       {mode === SAVING && (
