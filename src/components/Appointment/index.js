@@ -10,9 +10,10 @@ import Confirm from "./Confirm";
 import Error from "./Error";
 
 export default function Appointment(props) {
-
+  
   // Variables for mode setting
   const EMPTY = "EMPTY";
+  const EDIT = "EDIT";
   const SHOW = "SHOW";
   const CREATE = "CREATE";
   const SAVING = "SAVING";
@@ -20,6 +21,7 @@ export default function Appointment(props) {
   const DELETE = "DELETE";
   const ERROR_SAVE = "ERROR_SAVE";
   const ERROR_DELETE = "ERROR_DELETE";
+
 
 
   const { mode, transition, back } = useVisualMode(
@@ -60,7 +62,7 @@ export default function Appointment(props) {
         <Show
           interview={props.interview}
           onDelete={() => { transition(CONFIRM) }}
-          onEdit={() => { transition(CREATE) }}
+          onEdit={() => { transition(EDIT) }}
         />
       )}
       {mode === CREATE && (
@@ -68,6 +70,15 @@ export default function Appointment(props) {
           interviewers={props.interviewers}
           onCancel={() => back()}
           onSave={save}
+        />
+      )}
+      {mode === EDIT && (
+        <Form
+          interviewers={props.interviewers}
+          onCancel={() => back()}
+          onSave={save}
+          interviewer={props.interview.interviewer.id}
+          student={props.name ? props.name : props.interview.student}
         />
       )}
       {mode === SAVING && (

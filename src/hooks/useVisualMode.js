@@ -9,17 +9,17 @@ export default function useVisualMode(initial) {
       setHistory(prev => prev.slice(0, -1));
       setHistory(prev => [...prev, newMode]);
     } else {
-      setHistory([...history, newMode]);
+      setHistory(prev => [...prev, newMode]);
     }
   }
 
   // transition back and update history
   function back() {
-    const newHistory = [...history];
+    // const newHistory = [...history];
     if (history.length < 2) {
       return;
     }
-    setHistory(newHistory.slice(0, -1));
+    setHistory(prev => [...prev.slice(0, -1)]);
   }
 
   return { mode: history[history.length - 1], transition, back };
